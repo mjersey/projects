@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/confirmation.css">
+    <link rel="stylesheet" href="css/loading-screen.css">
+    <title>Email Confirmation</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Confirmation</h1>
+        <div class="envelope-container">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Confirmation-TYtg0RNA5s3hMO8oIVRLd2SE9UWWw1.png" alt="Email notification" class="envelope-image">
+        </div>
+        <p class="message">
+            We have sent a 4-digit code to <span class="email">email@gmail.com</span><br>
+            to confirm the validity of your email address.
+        </p>
+        <div class="code-inputs">
+            <input type="text" class="code-input" maxlength="1" autofocus>
+            <input type="text" class="code-input" maxlength="1">
+            <input type="text" class="code-input" maxlength="1">
+            <input type="text" class="code-input" maxlength="1">
+        </div>
+        <p class="timer">Expires in <span id="countdown">53s</span></p>
+        <button class="confirm-btn">Confirm</button>
+        <p class="resend">
+            Did not receive any email? <span class="resend-link">Resend Code</span>
+        </p>
+    </div>
+
+    <!-- Loading screen as a separate overlay -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-pulse"></div>
+            </div>
+            <h2>Setting Up Your Account</h2>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            <p class="loading-message">Please wait while we prepare your dashboard...</p>
+        </div>
+    </div>
+
+    <script src="js/confirmation.js"></script>
+    <script src="js/loading-screen.js"></script>
+</body>
+</html>

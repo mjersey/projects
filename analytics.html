@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - DIABETECH</title>
+    <!-- Load theme-sync.js first to apply appearance settings before page renders -->
+    <script src="js/theme-sync.js"></script>
+    <script src="js/darkmode.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/analytics.css">
+    <link rel="stylesheet" href="css/appearance.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Additional Chart.js plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-box-and-violin-plot@4.0.0/build/Chart.BoxPlot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.2.0/dist/chartjs-chart-matrix.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="avatar">
+                    <div class="avatar-placeholder"></div>
+                </div>
+                <div class="user-info-placeholder"></div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li data-page="dashboard">
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li data-page="patients">
+                        <a href="patients.html">
+                            <i class="fas fa-user"></i>
+                            <span>Patient</span>
+                        </a>
+                    </li>
+                    <li class="active" data-page="analytics">
+                        <a href="analytics.html">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li data-page="insights">
+                        <a href="insights.html">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Insights</span>
+                        </a>
+                    </li>
+                    <li data-page="settings">
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="sign-in.html" class="sign-out">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Analytics</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </div>
+                    
+                    <div class="notification" id="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                        
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <div class="notification-header">
+                                <h4>Notifications</h4>
+                                <a href="#" class="mark-all-read">Mark all as read</a>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>New patient registration</p>
+                                        <span class="notification-time">5 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>High risk alert: Patient #1234</p>
+                                        <span class="notification-time">20 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>Assessment completed</p>
+                                        <span class="notification-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>Appointment reminder: Tomorrow</p>
+                                        <span class="notification-time">3 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">View all notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="theme-toggle" id="theme-toggle">
+                        <i id="theme-toggle-icon" class="fas fa-moon"></i>
+                    </div>
+                    
+                    <div class="user-avatar">
+                        <img src="/placeholder.svg?height=40&width=40" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics Content -->
+            <div class="analytics-content">
+                <h2>Demographic Data Analysis</h2>
+                <!-- Filter Controls -->
+                <div class="analytics-controls">
+                    <div class="filter-controls">
+                        <div class="date-filter">
+                            <select id="date-range">
+                                <option value="7">Last 7 days</option>
+                                <option value="30" selected>Last 30 days</option>
+                                <option value="90">Last 90 days</option>
+                                <option value="365">Last year</option>
+                            </select>
+                        </div>
+                        <button class="filter-btn" id="filter-btn">
+                            <i class="fas fa-sliders-h"></i>
+                            <span>Filter</span>
+                        </button>
+                        <button class="export-btn" id="export-btn">
+                            <i class="fas fa-download"></i>
+                            <span>Export</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 1. Demographic Data Analysis -->
+                <section class="analytics-section">
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Age & Gender Distribution</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="demographic-bar-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Gender Distribution</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="gender-pie-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Blood Sugar Trends & Risk Factors -->
+                <section class="analytics-section">
+                    <h2>Blood Sugar Trends & Risk Factors</h2>
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Blood Sugar Levels Over Time</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="blood-sugar-line-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Blood Sugar Distribution by Risk Factor</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="blood-sugar-box-plot"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. AI Risk Prediction & Pattern Analysis -->
+                <section class="analytics-section">
+                    <h2>AI Risk Prediction & Pattern Analysis</h2>
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Risk Factor Correlation Heatmap</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="risk-factor-heatmap"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Blood Sugar vs Complication Risk</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="blood-sugar-scatter-plot"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Complications & Severity Levels -->
+                <section class="analytics-section">
+                    <h2>Complications & Severity Levels</h2>
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Complications by Risk Group</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="complications-stacked-bar"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Severity Level Distribution</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="severity-histogram"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Machine Learning Model Evaluation -->
+                <section class="analytics-section">
+                    <h2>Machine Learning Model Evaluation</h2>
+                    <div class="chart-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>ROC Curve</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="roc-curve"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Confusion Matrix</h3>
+                                <div class="chart-actions">
+                                    <button class="chart-action-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="chart-action-btn" title="Fullscreen">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="confusion-matrix"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Filter Modal -->
+        <div class="modal" id="filter-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Filter Options</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="filter-group">
+                        <label>Risk Level</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="high" checked> High</label>
+                            <label><input type="checkbox" value="medium" checked> Moderate</label>
+                            <label><input type="checkbox" value="low" checked> Low</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Age Group</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="0-18" checked> 0-18</label>
+                            <label><input type="checkbox" value="19-35" checked> 19-35</label>
+                            <label><input type="checkbox" value="36-50" checked> 36-50</label>
+                            <label><input type="checkbox" value="51+" checked> 51+</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Gender</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="male" checked> Male</label>
+                            <label><input type="checkbox" value="female" checked> Female</label>
+                            <label><input type="checkbox" value="other" checked> Other</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Complications</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="neuropathy" checked> Neuropathy</label>
+                            <label><input type="checkbox" value="nephropathy" checked> Nephropathy</label>
+                            <label><input type="checkbox" value="retinopathy" checked> Retinopathy</label>
+                            <label><input type="checkbox" value="cardiovascular" checked> Cardiovascular</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="reset-filters">Reset</button>
+                    <button class="btn btn-primary" id="apply-filters">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Modal -->
+        <div class="modal" id="export-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Export Analytics</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="filter-group">
+                        <label>Export Format</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="export-format" value="pdf" checked> PDF Report</label>
+                            <label><input type="radio" name="export-format" value="csv"> CSV Data</label>
+                            <label><input type="radio" name="export-format" value="excel"> Excel Spreadsheet</label>
+                            <label><input type="radio" name="export-format" value="images"> Chart Images</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Include Sections</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="demographic" checked> Demographic Data</label>
+                            <label><input type="checkbox" value="blood-sugar" checked> Blood Sugar Trends</label>
+                            <label><input type="checkbox" value="risk-prediction" checked> Risk Prediction</label>
+                            <label><input type="checkbox" value="complications" checked> Complications</label>
+                            <label><input type="checkbox" value="ml-evaluation" checked> ML Model Evaluation</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancel-export">Cancel</button>
+                    <button class="btn btn-primary" id="confirm-export">Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/analytics.js"></script>
+    <script src="js/theme-loader.js"></script>
+</body>
+</html>

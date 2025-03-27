@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - DIABETECH</title>
+    <!-- Load theme-sync.js first to apply appearance settings before page renders -->
+    <script src="js/theme-sync.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/appearance.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/security.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="avatar">
+                    <div class="avatar-placeholder"></div>
+                </div>
+                <div class="user-info-placeholder"></div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li data-page="dashboard">
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li data-page="patients">
+                        <a href="patients.html">
+                            <i class="fas fa-user"></i>
+                            <span>Patient</span>
+                        </a>
+                    </li>
+                    <li data-page="analytics">
+                        <a href="analytics.html">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li data-page="insights">
+                        <a href="insights.html">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Insights</span>
+                        </a>
+                    </li>
+                    <li class="active" data-page="settings">
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="sign-in.html" class="sign-out">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Settings</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </div>
+                    
+                    <div class="notification" id="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                        
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <div class="notification-header">
+                                <h4>Notifications</h4>
+                                <a href="#" class="mark-all-read">Mark all as read</a>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>New patient registration</p>
+                                        <span class="notification-time">5 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>High risk alert: Patient #1234</p>
+                                        <span class="notification-time">20 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>Assessment completed</p>
+                                        <span class="notification-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>Appointment reminder: Tomorrow</p>
+                                        <span class="notification-time">3 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">View all notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="theme-toggle" id="theme-toggle">
+                        <i id="theme-toggle-icon" class="fas fa-moon"></i>
+                    </div>
+                    
+                    <div class="user-avatar">
+                        <img src="/placeholder.svg?height=40&width=40" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Section -->
+            <section class="settings-section">
+                
+                <div class="settings-container">
+                    <div class="settings-sidebar">
+                        <ul class="settings-nav">
+                            <li class="active" data-settings="profile">
+                                <i class="fas fa-user-circle"></i> Profile
+                            </li>
+                            <li data-settings="notifications">
+                                <i class="fas fa-bell"></i> Notifications
+                            </li>
+                            <li data-settings="security">
+                                <i class="fas fa-shield-alt"></i> Security
+                            </li>
+                            <li data-settings="appearance">
+                                <i class="fas fa-palette"></i> Appearance
+                            </li>
+                            <li data-settings="system">
+                                <i class="fas fa-cogs"></i> System
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="settings-content">
+                        <!-- Profile Settings -->
+                        <div class="settings-panel active" id="profile-settings">
+                            <div class="settings-header">
+                                <h3>Profile Settings</h3>
+                                <p>Manage your personal information and account preferences</p>
+                            </div>
+                            
+                            <div class="profile-info">
+                                <div class="profile-avatar">
+                                    <img src="https://via.placeholder.com/100" alt="Profile Picture">
+                                    <div class="avatar-overlay">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                </div>
+                                <div class="profile-details">
+                                    <h4>Dr. Sarah Johnson</h4>
+                                    <p>Cardiologist</p>
+                                    <p>ID: DOC-2023-0042</p>
+                                </div>
+                            </div>
+                            
+                            <form class="settings-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first-name">First Name</label>
+                                        <input type="text" id="first-name" value="Sarah" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name">Last Name</label>
+                                        <input type="text" id="last-name" value="Johnson" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" value="sarah.johnson@hospital.com" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" id="phone" value="(555) 123-4567" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="department">Department</label>
+                                    <select id="department" class="form-control">
+                                        <option value="cardiology" selected>Cardiology</option>
+                                        <option value="neurology">Neurology</option>
+                                        <option value="pediatrics">Pediatrics</option>
+                                        <option value="oncology">Oncology</option>
+                                        <option value="emergency">Emergency Medicine</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="bio">Bio</label>
+                                    <textarea id="bio" class="form-control" rows="4">Experienced cardiologist with over 10 years of practice. Specializing in preventive cardiology and heart failure management.</textarea>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary">Cancel</button>
+                                    <button type="button" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Notification Settings -->
+                        <div class="settings-panel" id="notifications-settings">
+                            <div class="settings-header">
+                                <h3>Notification Settings</h3>
+                                <p>Manage how and when you receive notifications</p>
+                            </div>
+                            
+                            <div class="settings-form">
+                                <div class="settings-group">
+                                    <h4>Email Notifications</h4>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Patient Alerts</h5>
+                                            <p>Receive email notifications for high-risk patient alerts</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Report Generation</h5>
+                                            <p>Receive email notifications when reports are generated</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>System Updates</h5>
+                                            <p>Receive email notifications about system updates</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>In-App Notifications</h4>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Patient Registration</h5>
+                                            <p>Show notifications when new patients are registered</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Risk Level Changes</h5>
+                                            <p>Show notifications when patient risk levels change</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Task Assignments</h5>
+                                            <p>Show notifications when tasks are assigned to you</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary">Reset to Default</button>
+                                    <button type="button" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Security Settings -->
+                        <div class="settings-panel" id="security-settings">
+                            <div class="settings-header">
+                                <h3>Security Settings</h3>
+                                <p>Manage your account security and authentication preferences</p>
+                            </div>
+                            
+                            <div class="settings-form">
+                                <div class="settings-group">
+                                    <h4>Password</h4>
+                                    
+                                    <div class="form-group">
+                                        <label for="current-password">Current Password</label>
+                                        <input type="password" id="current-password" class="form-control" placeholder="Enter current password">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="new-password">New Password</label>
+                                        <input type="password" id="new-password" class="form-control" placeholder="Enter new password">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="confirm-password">Confirm New Password</label>
+                                        <input type="password" id="confirm-password" class="form-control" placeholder="Confirm new password">
+                                    </div>
+                                    
+                                    <div class="password-requirements">
+                                        <p>Password must:</p>
+                                        <ul>
+                                            <li><i class="fas fa-times"></i> Be at least 8 characters long</li>
+                                            <li><i class="fas fa-times"></i> Include at least one uppercase letter</li>
+                                            <li><i class="fas fa-times"></i> Include at least one number</li>
+                                            <li><i class="fas fa-times"></i> Include at least one special character</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-primary">Update Password</button>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>Two-Factor Authentication</h4>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Enable Two-Factor Authentication</h5>
+                                            <p>Add an extra layer of security to your account</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="two-factor-setup">
+                                        <p>Scan the QR code with your authenticator app:</p>
+                                        <div class="qr-code-placeholder"></div>
+                                        <div class="form-group">
+                                            <label for="verification-code">Verification Code</label>
+                                            <input type="text" id="verification-code" class="form-control" placeholder="Enter 6-digit code">
+                                        </div>
+                                        <button type="button" class="btn btn-primary">Verify</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>Session Management</h4>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Auto Logout</h5>
+                                            <p>Automatically log out after 30 minutes of inactivity</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="active-sessions">
+                                        <h5>Active Sessions</h5>
+                                        <div class="session-item">
+                                            <div class="session-info">
+                                                <i class="fas fa-laptop"></i>
+                                                <div>
+                                                    <p>Windows 10 - Chrome</p>
+                                                    <span>Current session</span>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-text">This Device</button>
+                                        </div>
+                                        <div class="session-item">
+                                            <div class="session-info">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <div>
+                                                    <p>iPhone 13 - Safari</p>
+                                                    <span>Last active: 2 hours ago</span>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-text btn-danger">Logout</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-danger">Logout of All Devices</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Appearance Settings -->
+                        <div class="settings-panel" id="appearance-settings">
+                            <div class="settings-header">
+                                <h3>Appearance Settings</h3>
+                                <p>Customize the look and feel of your dashboard</p>
+                            </div>
+                            
+                            <div class="settings-form">
+                                <div class="settings-group">
+                                    <h4>Theme</h4>
+                                    
+                                    <div class="theme-options">
+                                        <div class="theme-option active">
+                                            <div class="theme-preview light-theme"></div>
+                                            <span>Light</span>
+                                        </div>
+                                        <div class="theme-option">
+                                            <div class="theme-preview dark-theme"></div>
+                                            <span>Dark</span>
+                                        </div>
+                                        <div class="theme-option">
+                                            <div class="theme-preview system-theme"></div>
+                                            <span>System</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>Color Scheme</h4>
+                                    
+                                    <div class="color-options">
+                                        <div class="color-option active" style="--accent-color: #4a6cf7;">
+                                            <div class="color-preview"></div>
+                                            <span>Blue</span>
+                                        </div>
+                                        <div class="color-option" style="--accent-color: #10b981;">
+                                            <div class="color-preview"></div>
+                                            <span>Green</span>
+                                        </div>
+                                        <div class="color-option" style="--accent-color: #f43f5e;">
+                                            <div class="color-preview"></div>
+                                            <span>Red</span>
+                                        </div>
+                                        <div class="color-option" style="--accent-color: #8b5cf6;">
+                                            <div class="color-preview"></div>
+                                            <span>Purple</span>
+                                        </div>
+                                        <div class="color-option" style="--accent-color: #f59e0b;">
+                                            <div class="color-preview"></div>
+                                            <span>Orange</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>Font Size</h4>
+                                    
+                                    <div class="font-size-slider">
+                                        <span>A</span>
+                                        <input type="range" min="1" max="5" value="3" class="slider" id="font-size-slider">
+                                        <span>A</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>Layout</h4>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Compact Mode</h5>
+                                            <p>Reduce spacing to fit more content on screen</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" name="compact-mode">
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Sticky Header</h5>
+                                            <p>Keep the header visible when scrolling</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" name="sticky-header" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Preview section -->
+                                <div class="appearance-preview">
+                                    <h5>Preview</h5>
+                                    <div class="preview-content">
+                                        <div class="preview-card">
+                                            <div class="preview-header">
+                                                <div class="preview-title">Patient Overview</div>
+                                                <div class="preview-badge">New</div>
+                                            </div>
+                                            <div class="preview-text">
+                                                This is a preview of how your content will look with the selected appearance settings.
+                                            </div>
+                                            <button class="preview-button">View Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary">Reset to Default</button>
+                                    <button type="button" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- System Settings -->
+                        <div class="settings-panel" id="system-settings">
+                            <div class="settings-header">
+                                <h3>System Settings</h3>
+                                <p>Configure system-wide preferences and integrations</p>
+                            </div>
+                            
+                            <div class="settings-form">
+                                <div class="settings-group">
+                                    <h4>Data Management</h4>
+                                    
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <h5>Automatic Data Backup</h5>
+                                            <p>Automatically backup your data daily</p>
+                                        </div>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="data-retention">Data Retention Period</label>
+                                        <select id="data-retention" class="form-control">
+                                            <option value="30">30 days</option>
+                                            <option value="60">60 days</option>
+                                            <option value="90" selected>90 days</option>
+                                            <option value="180">180 days</option>
+                                            <option value="365">1 year</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-secondary">Backup Now</button>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>Integrations</h4>
+                                    
+                                    <div class="integration-item">
+                                        <div class="integration-info">
+                                            <img src="https://via.placeholder.com/30" alt="EHR System">
+                                            <div>
+                                                <h5>EHR System</h5>
+                                                <p>Connected</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-text">Configure</button>
+                                    </div>
+                                    
+                                    <div class="integration-item">
+                                        <div class="integration-info">
+                                            <img src="https://via.placeholder.com/30" alt="Lab System">
+                                            <div>
+                                                <h5>Lab System</h5>
+                                                <p>Connected</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-text">Configure</button>
+                                    </div>
+                                    
+                                    <div class="integration-item">
+                                        <div class="integration-info">
+                                            <img src="https://via.placeholder.com/30" alt="Pharmacy System">
+                                            <div>
+                                                <h5>Pharmacy System</h5>
+                                                <p>Not connected</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary">Connect</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-group">
+                                    <h4>System Information</h4>
+                                    
+                                    <div class="system-info">
+                                        <div class="info-item">
+                                            <span class="info-label">System Name:</span>
+                                            <span class="info-value">DIABETECH</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Date Created:</span>
+                                            <span class="info-value">March 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/settings.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/security.js"></script>
+    <script src="js/appearance.js"></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Healthcare Dashboard - Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/theme-sync.js"></script>
+    <script src="js/darkmode.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/appearance.css">
+    <link rel="stylesheet" href="css/insights.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="avatar">
+                    <div class="avatar-placeholder"></div>
+                </div>
+                <div class="user-info-placeholder"></div>
+            </div>
+            <div class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="patients.html">
+                            <i class="fas fa-user-group"></i>
+                            <span>Patients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="insights.html">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Insights</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-gear"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#" class="sign-out">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Insights</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                        <div class="notification-dropdown">
+                            <div class="notification-header">
+                                <h4>Notifications</h4>
+                                <a href="#" class="mark-all-read">Mark all as read</a>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>High-risk patient alert: John Doe</p>
+                                        <span class="notification-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>New patient data uploaded</p>
+                                        <span class="notification-time">5 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>Weekly report generated</p>
+                                        <span class="notification-time">1 day ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">View all notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-toggle" id="theme-toggle">
+                        <i id="theme-toggle-icon" class="fas fa-moon"></i>
+                    </div>
+                    <div class="user-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Profile">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insights Content -->
+            <div class="insights-content">
+                <div class="insights-header">
+                    <h2>Key Findings & Analysis</h2>
+                    <p class="insights-description">
+                        This page presents the key insights derived from our comprehensive analysis of diabetes patient data. 
+                        These findings help identify patterns, risk factors, and potential interventions to improve patient outcomes.
+                    </p>
+                </div>
+
+                <!-- Insights Sections -->
+                <div class="insights-sections">
+                    <!-- Section 1: Demographic Insights -->
+                    <div class="insight-section" id="demographic-insights">
+                        <div class="insight-section-header">
+                            <div class="insight-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Demographic Insights</h3>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="key-insight">
+                                    <div class="insight-stat">40%</div>
+                                    <p>The highest prevalence of diabetes complications is among individuals aged 50-60, accounting for 40% of the total respondents.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">60%</div>
+                                    <p>Males (60%) have a higher incidence of hypertension alongside diabetes compared to females (40%), indicating a greater risk of comorbidities in male patients.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">3x</div>
+                                    <p>Patients with a family history of diabetes are three times more likely to develop complications before age 45 compared to those without genetic predisposition.</p>
+                                </div>
+                            </div>
+                            <div class="insight-visual">
+                                <div class="mini-chart">
+                                    <canvas id="demographic-mini-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Blood Sugar & Risk Factor Patterns -->
+                    <div class="insight-section" id="blood-sugar-insights">
+                        <div class="insight-section-header">
+                            <div class="insight-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Blood Sugar & Risk Factor Patterns</h3>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="key-insight">
+                                    <div class="insight-stat">70%</div>
+                                    <p>Patients with an HbA1c level greater than 7.5% have a 70% probability of developing complications, whereas those with levels below 6.5% have only a 15% risk.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">80%</div>
+                                    <p>Among sedentary individuals, 80% exhibit elevated fasting blood sugar levels, whereas only 45% of those with an active lifestyle fall into the risk zone.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">2.5x</div>
+                                    <p>Patients with consistently high blood sugar variability are 2.5 times more likely to develop retinopathy compared to those with stable glucose levels.</p>
+                                </div>
+                            </div>
+                            <div class="insight-visual">
+                                <div class="mini-chart">
+                                    <canvas id="blood-sugar-mini-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: AI-Powered Risk Prediction Analysis -->
+                    <div class="insight-section" id="ai-prediction-insights">
+                        <div class="insight-section-header">
+                            <div class="insight-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI-Powered Risk Prediction Analysis</h3>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="key-insight">
+                                    <div class="insight-stat">85%</div>
+                                    <p>The AI model achieves 85% accuracy in predicting high-risk patients based on their medical history and blood test results.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">Top 3</div>
+                                    <p>According to the AI model, the top three risk factors for diabetes complications are: (1) Hypertension, (2) High Cholesterol, and (3) Smoking Habits.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">92%</div>
+                                    <p>Early intervention based on AI predictions has shown a 92% success rate in preventing severe complications when implemented within 3 months of risk identification.</p>
+                                </div>
+                            </div>
+                            <div class="insight-visual">
+                                <div class="risk-factors-ranking">
+                                    <div class="risk-factor">
+                                        <span class="risk-rank">1</span>
+                                        <span class="risk-name">Hypertension</span>
+                                        <div class="risk-bar">
+                                            <div class="risk-bar-fill" style="width: 85%"></div>
+                                        </div>
+                                        <span class="risk-value">85%</span>
+                                    </div>
+                                    <div class="risk-factor">
+                                        <span class="risk-rank">2</span>
+                                        <span class="risk-name">High Cholesterol</span>
+                                        <div class="risk-bar">
+                                            <div class="risk-bar-fill" style="width: 78%"></div>
+                                        </div>
+                                        <span class="risk-value">78%</span>
+                                    </div>
+                                    <div class="risk-factor">
+                                        <span class="risk-rank">3</span>
+                                        <span class="risk-name">Smoking</span>
+                                        <div class="risk-bar">
+                                            <div class="risk-bar-fill" style="width: 65%"></div>
+                                        </div>
+                                        <span class="risk-value">65%</span>
+                                    </div>
+                                    <div class="risk-factor">
+                                        <span class="risk-rank">4</span>
+                                        <span class="risk-name">Obesity</span>
+                                        <div class="risk-bar">
+                                            <div class="risk-bar-fill" style="width: 60%"></div>
+                                        </div>
+                                        <span class="risk-value">60%</span>
+                                    </div>
+                                    <div class="risk-factor">
+                                        <span class="risk-rank">5</span>
+                                        <span class="risk-name">Family History</span>
+                                        <div class="risk-bar">
+                                            <div class="risk-bar-fill" style="width: 55%"></div>
+                                        </div>
+                                        <span class="risk-value">55%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Complication Severity & Trends -->
+                    <div class="insight-section" id="complication-insights">
+                        <div class="insight-section-header">
+                            <div class="insight-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Complication Severity & Trends</h3>
+                        </div>
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="key-insight">
+                                    <div class="insight-stat">55%</div>
+                                    <p>Neuropathy is the most common complication, observed in 55% of high-risk patients.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">3x</div>
+                                    <p>The severity of complications increases among individuals who have had diabetes for more than 10 years compared to those with a shorter disease duration.</p>
+                                </div>
+                                <div class="key-insight">
+                                    <div class="insight-stat">68%</div>
+                                    <p>Among patients with multiple complications, 68% developed cardiovascular issues within 5 years of their initial diabetes diagnosis.</p>
+                                </div>
+                            </div>
+                            <div class="insight-visual">
+                                <div class="mini-chart">
+                                    <canvas id="complications-mini-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 5: Recommendations & Actionable Insights -->
+                    <div class="insight-section" id="recommendations">
+                        <div class="insight-section-header">
+                            <div class="insight-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <h3>Recommendations & Actionable Insights</h3>
+                        </div>
+                        <div class="insight-content">
+                            <div class="recommendations-grid">
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <h4>Regular Monitoring</h4>
+                                    <p>To reduce risks, regular check-ups and lifestyle modifications should be prioritized, especially for individuals aged 50 and above.</p>
+                                </div>
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <h4>AI Screening</h4>
+                                    <p>The AI model can be used for early detection of high-risk patients, making it a potential screening tool for healthcare clinics.</p>
+                                </div>
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-walking"></i>
+                                    </div>
+                                    <h4>Exercise Programs</h4>
+                                    <p>Implement targeted exercise programs for sedentary patients, as data shows a 55% reduction in complication risk with regular physical activity.</p>
+                                </div>
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <h4>Dietary Guidance</h4>
+                                    <p>Personalized dietary plans should be developed based on blood sugar patterns, with emphasis on low glycemic index foods for patients with high HbA1c levels.</p>
+                                </div>
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-user-md"></i>
+                                    </div>
+                                    <h4>Specialist Referrals</h4>
+                                    <p>Patients with multiple risk factors should be referred to specialists earlier, as proactive intervention reduces complication severity by up to 40%.</p>
+                                </div>
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <h4>Digital Monitoring</h4>
+                                    <p>Implement continuous glucose monitoring and mobile health tracking for patients with high blood sugar variability to enable timely interventions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Report Button -->
+                <div class="insights-footer">
+                    <button id="export-insights" class="export-btn">
+                        <i class="fas fa-file-export"></i>
+                        Export Insights Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="export-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Export Insights Report</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Select the format for your insights report:</p>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="export-format" value="pdf" checked>
+                        PDF Document
+                    </label>
+                    <label>
+                        <input type="radio" name="export-format" value="excel">
+                        Excel Spreadsheet
+                    </label>
+                    <label>
+                        <input type="radio" name="export-format" value="csv">
+                        CSV File
+                    </label>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="include-charts" checked>
+                        Include charts and visualizations
+                    </label>
+                    <label>
+                        <input type="checkbox" name="include-recommendations" checked>
+                        Include recommendations
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-export" class="btn btn-secondary">Cancel</button>
+                <button id="confirm-export" class="btn btn-primary">Export</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/insights.js"></script>
+</body>
+</html>

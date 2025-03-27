@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - DIABETECH</title>
+  <!-- Add font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <!-- Add Material Symbols font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="css/sign-up.css">
+  <link rel="stylesheet" href="css/loading-screen.css">
+</head>
+<body>
+  
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo-container">
+        <div class="logo-circle"></div>
+        <div class="logo-text"></div>
+      </div>
+
+      <!-- Dark Mode Toggle -->
+      <div class="theme-toggle">
+        <button id="theme-toggle-btn" aria-label="Toggle dark mode">
+          <span class="material-symbols-outlined light-icon">light_mode</span>
+          <span class="material-symbols-outlined dark-icon">dark_mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Left Section -->
+    <section class="left-section">
+      <h1>Data-Driven Decisions for Better Health</h1>
+      <p>
+        Our advanced algorithms analyze your health data to provide personalized recommendations.
+      </p>
+      <div class="illustration-container">
+        <img 
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Graph-6qF26H8r82DQjCT5Dd0omCtSfbEb2l.png" 
+          alt="Health data analytics illustration"
+          class="illustration"
+        />
+      </div>
+    </section>
+
+    <!-- Right Section - Sign In Form -->
+<section class="right-section">
+    <div class="form-header">
+      <h2>Sign Up</h2>
+      <p>
+        <span class="welcome-text">Welcome!</span> Please enter your details below.
+      </p>
+    </div>
+  
+    <form>
+      <div class="form-group">
+        <div class="name-input-container">
+          <div class="name-field">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname">
+          </div>
+          <div class="name-field">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname">
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-container">
+          <span class="input-icon">
+            <span class="material-symbols-outlined">mail</span>
+          </span>
+          <input type="email" id="email" name="email" placeholder="youremail@gmail.com"/>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-container">
+          <span class="input-icon">
+            <span class="material-symbols-outlined">lock</span>
+          </span>
+          <input type="password" id="password" name="password" placeholder="+8 Characters" class="password-field">
+          <button type="button" class="password-toggle">
+            <span class="material-symbols-outlined visibility">visibility</span>
+            <span class="material-symbols-outlined visibility-off">visibility_off</span>
+          </button>
+        </div>
+      </div>
+
+      <a href="confirmation.html">
+        <button type="button" class="sign-up-button">Sign Up</button>
+    </a>    
+
+        <p class="sign-in-text">
+          Already have an account? <a href="sign-in.html" class="sign-in-link">Sign In</a>
+        </p>
+    </form>
+</section>
+  </main>
+
+
+
+  <script src="js/togglepass.js"></script>
+  <script src="js/darkmode2.js"></script>
+  <script src="js/loading-screen.js"></script>
+</body>
+</html>
